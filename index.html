@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Fan Animation</title>
+        <style>
+            /*
+            div[data-ranu="myfanbox"]{
+                border: 1px dashed #000;
+            }
+            */  
+
+            .buttongroup > button:first-child{
+                background-color: rgb(0, 247, 255);
+                border: none;
+                padding: 30px 20px;
+                width: 100px;
+                
+                background-image: url("img/btn.png");
+                background-repeat: no-repeat;
+                background-size: 150px 150px;
+                background-position: -20px -72px;
+            }
+
+            .FanBox{
+                width: 300px;
+                height: 300px;
+                background-image: url("img/fan2.png");
+                background-repeat: no-repeat;
+                background-size: cover;
+                margin: 100px auto;
+                animation-name: fan;
+                animation-duration: 1s;
+                animation-timing-function: linear;
+                animation-iteration-count: infinite;
+                animation-play-state: paused;
+            }
+            @keyframes fan {
+                0%{
+                    transform: rotateZ(0deg);
+                }
+                100%{
+                    transform: rotateZ(359deg);
+                }
+            }
+        </style>
+        <script>
+            function x(elem){
+                return document.querySelector(elem);
+            }
+      
+            //1. defination
+            function startFan(speed){
+                if(speed == 0){
+                    x('.FanBox').style.animationPlayState = 'paused';
+                    
+                }else if(speed == 1){
+                    //alert('1');
+                   x('.FanBox').style.animationPlayState = 'running';
+                   x('#FanBoxx').style.animationDuration = '1s';
+                   
+                }else if(speed == 2){
+                    //alert('2');
+                   x('[data-ranu="myfanbox"]').style.animationPlayState = 'running';
+                   x('[data-ranu="myfanbox"]').style.animationDuration = '0.5s';
+                   querySelector('[onclick="startFan(0)"]').style.display='none';
+                }else{
+                   // alert('3');
+                   document.getElementById('FanBoxx').style.animationPlayState= 'running';
+                   document.getElementById('FanBoxx').style.animationDuration='0.1s';
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div class="FanBox" id="FanBoxx" data-ranu="myfanbox"></div>
+        <div style="text-align: center;" class="buttongroup">
+            <button onclick="startFan('0')"></button>
+            <button onclick="startFan('1')">1</button>
+            <button onclick="startFan('2')">2</button>
+            <button onclick="startFan('3')">3</button>
+        </div>
+        <script></script>
+    </body>
+</html>
